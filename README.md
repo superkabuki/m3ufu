@@ -3,10 +3,7 @@
 
 # M3uFu
 The Most Advanced M3U8 Parser Available.
-## Latest Version `v0.0.89`  __Critical Update__
-* TagParser update to handle tags without values.
-* TagParser update to handle blank lines in master.m3u8 files
-
+## Latest Version `v0.0.91` 
 ### `Features:`
 * All HLS Tags are Supported.
 * Private / Custom Tags are Supported.
