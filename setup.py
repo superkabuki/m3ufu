@@ -20,7 +20,7 @@ setuptools.setup(
     scripts=['bin/m3ufu'],
     install_requires=[
         "pyaes",
-        "threefive3 >= 3.0.11",
+        "threefive3 >= 3.0.17",
     ],
     classifiers=[
         "License :: OSI Approved :: MIT License",
