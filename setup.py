@@ -14,13 +14,13 @@ setuptools.setup(
     description="M3U8 Parser with SCTE-35 Support",
     long_description=readme,
     long_description_content_type="text/markdown",
-    url="https://github.com/futzu/m3u8fu",
+    url="https://github.com/superkabuki/m3u8fu",
     packages=setuptools.find_packages(),
     py_modules=["m3ufu"],
     scripts=['bin/m3ufu'],
     install_requires=[
         "pyaes",
-        "threefive3 >= 3.0.17",
+        "threefive >= 3.0.53",
     ],
     classifiers=[
         "License :: OSI Approved :: MIT License",
