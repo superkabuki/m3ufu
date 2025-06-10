@@ -8,8 +8,8 @@ import os
 import sys
 import time
 import pyaes
-import threefive3
-from threefive3.new_reader import reader
+import threefive
+from threefive import reader
 
 """
 Odd number versions are releases.
@@ -22,7 +22,7 @@ version you have installed.
 
 MAJOR = "0"
 MINOR = "0"
-MAINTAINENCE = "93"
+MAINTAINENCE = "91"
 
 
 def version():
@@ -243,9 +243,9 @@ class TagParser:
         return tail, value
 
 
-class Segment:
+class HlsSegment:
     """
-    The Segment class represents a segment
+    The HlsSegment class represents a segment
     and associated data
     """
 
@@ -299,7 +299,7 @@ class Segment:
 
     def _get_pts_start(self):
         try:
-            strm = threefive3.Segment(self.media_file())
+            strm = threefive.Segment(self.media_file())
             strm.decode(func=None)
             pts_start = strm.pts_start
             #  print(pts_start)
@@ -365,11 +365,11 @@ class Segment:
     def _do_cue(self):
         """
         _do_cue parses a SCTE-35 encoded string
-        via the threefive3.Cue class
+        via the threefive.Cue class
         """
         if self.cue:
             try:
-                tf = threefive3.Cue(self.cue)
+                tf = threefive.Cue(self.cue)
                 tf.decode()
                 if self.debug:
                     tf.show()
@@ -559,7 +559,7 @@ class M3uFu:
                 self.media_list.popleft()
             while len(self.segments) > self.window_size:
                 self.segments.popleft()
-            segment = Segment(self.chunk, media, self._start, self.base_uri)
+            segment = HlsSegment(self.chunk, media, self._start, self.base_uri)
             if self.debug:
                 segment.debug = True
             segment.decode()
@@ -607,7 +607,6 @@ class M3uFu:
         if not line:
             return False
         line = self._clean_line(line)
-
         if "ENDLIST" in line:
             self.reload = False
         if not self._parse_header(line):
