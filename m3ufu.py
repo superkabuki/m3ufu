@@ -22,7 +22,7 @@ version you have installed.
 
 MAJOR = "0"
 MINOR = "0"
-MAINTAINENCE = "93"
+MAINTAINENCE = "95"
 
 
 def version():
@@ -345,10 +345,10 @@ class HlsSegment:
                 if "#EXT-X-CUE-OUT" in self.tags:
                     self._do_cue()
         if "#EXT-X-DATERANGE" in self.tags:
-            if "SCTE35-OUT" in self.tags["#EXT-X-DATERANGE"]:
-                self.cue = self.tags["#EXT-X-DATERANGE"]["SCTE35-OUT"]
-                self._do_cue()
-                return
+           # if "SCTE35-OUT" in self.tags["#EXT-X-DATERANGE"]:
+             #   self.cue = self.tags["#EXT-X-DATERANGE"]["SCTE35-OUT"]
+            self._do_cue()
+            return
         if "#EXT-OATCLS-SCTE35" in self.tags:
             self.cue = self.tags["#EXT-OATCLS-SCTE35"]
             if isinstance(self.cue, dict):
@@ -373,7 +373,7 @@ class HlsSegment:
                 tf.decode()
                 if self.debug:
                     tf.show()
-                self.cue_data = tf.get()
+              #  self.cue_data = tf.get()
             except:
                 pass
 
@@ -610,7 +610,7 @@ class M3uFu:
         if "ENDLIST" in line:
             self.reload = False
         if not self._parse_header(line):
-          #  self._is_master(line)
+            self._is_master(line)
             self.chunk.append(line)
             if (
                 not line.startswith("#")
