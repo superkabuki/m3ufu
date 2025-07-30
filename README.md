@@ -3,7 +3,7 @@
 
 # M3uFu
 The Most Advanced M3U8 Parser Available.
-## Latest Version `v0.0.93` 
+## Latest Version `v0.0.97` 
 ### `Features:`
 * All HLS Tags are Supported.
 * Private / Custom Tags are Supported.
